@@ -1,4 +1,4 @@
-# How-to-Add-Arrows-to-the-Chart-Axis-in-.NET-MAUI-Chart
+# How to Add Arrows to the Chart Axis in .NET MAUI Chart
 This article provides a detailed walkthrough on how to add arrows to the axis using Annotations in [.NET MAUI Cartesian Chart](https://www.syncfusion.com/maui-controls/maui-cartesian-charts).
 
 The [SfCartesianChart](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html) includes support for [ Annotations](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html#Syncfusion_Maui_Charts_SfCartesianChart_Annotations), enabling the addition of various types of annotations to enhance chart visualization. Using [Line Annotation](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.LineAnnotation.html) for you can achieves to add arrows to the axis.
