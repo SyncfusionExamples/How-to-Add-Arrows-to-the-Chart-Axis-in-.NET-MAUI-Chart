@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:local="clr-namespace:CustomizeAnnotationArrow"
+             x:Class="CustomizeAnnotationArrow.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <chart:SfCartesianChart>
+
+        <chart:SfCartesianChart.Title>
+            <Label Text="Monthly Sales Performance" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        </chart:SfCartesianChart.Title>
+        
+        <chart:SfCartesianChart.XAxes>
+            <chart:CategoryAxis PlotOffsetStart="7" PlotOffsetEnd="17" ShowMajorGridLines="False">
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="Months"/>
+                </chart:CategoryAxis.Title>
+                <chart:CategoryAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeWidth="0"/>
+                </chart:CategoryAxis.AxisLineStyle>
+                <chart:CategoryAxis.MajorTickStyle>
+                    <chart:ChartAxisTickStyle StrokeWidth="0"/>
+                </chart:CategoryAxis.MajorTickStyle>
+            </chart:CategoryAxis>
+        </chart:SfCartesianChart.XAxes>
+
+        <chart:SfCartesianChart.YAxes>
+            <chart:NumericalAxis Minimum="0" Maximum="30000" Interval="10000" PlotOffsetStart="7">
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Sales Rate"/>
+                </chart:NumericalAxis.Title>
+                <chart:NumericalAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeWidth="0"/>
+                </chart:NumericalAxis.AxisLineStyle>
+                <chart:NumericalAxis.MajorTickStyle>
+                    <chart:ChartAxisTickStyle StrokeWidth="0"/>
+                </chart:NumericalAxis.MajorTickStyle>
+            </chart:NumericalAxis>
+        </chart:SfCartesianChart.YAxes>
+
+        <chart:SfCartesianChart.Legend>
+            <chart:ChartLegend/>
+        </chart:SfCartesianChart.Legend>
+
+        <chart:SfCartesianChart.Annotations>
+            <chart:LineAnnotation CoordinateUnit="Axis" X1="-0.5" X2="5.6" Y1="0" Y2="0" Stroke="Black" LineCap="Arrow" StrokeWidth="2"/>
+            <chart:LineAnnotation CoordinateUnit="Axis" X1="-0.5" X2="-0.5" Y1="0" Y2="30000" Stroke="Black" LineCap="Arrow" StrokeWidth="2"/>
+        </chart:SfCartesianChart.Annotations>
+
+        <chart:ColumnSeries ItemsSource="{Binding ElectronicsSales}"
+                XBindingPath="Month"
+                YBindingPath="Sales"
+                EnableTooltip="True"
+                EnableAnimation="True"
+                Label="Electronic Sales">
+        </chart:ColumnSeries>
+
+        <chart:ColumnSeries ItemsSource="{Binding FurnitureSales}"
+                XBindingPath="Month"
+                YBindingPath="Sales"
+                EnableTooltip="True"
+                EnableAnimation="True"
+                Label="Furniture Sales">
+        </chart:ColumnSeries>
+
+    </chart:SfCartesianChart>
+
+</ContentPage>
