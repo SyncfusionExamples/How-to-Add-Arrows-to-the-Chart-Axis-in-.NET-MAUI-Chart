@@ -15,7 +15,8 @@ Learn step-by-step instructions and gain insights to add arrows to the axis usin
 
 **Step 1:** Initialize the SfCartesianChart and add the series and legend to it as follows.
 
-**XAML** 
+**XAML**
+
  ```xml
 <chart:SfCartesianChart>
 
@@ -41,12 +42,44 @@ Learn step-by-step instructions and gain insights to add arrows to the axis usin
 
 </chart:SfCartesianChart> 
  ```
+
+**C#:**
+ 
+ ```csharp
+var chart = new SfCartesianChart();
+
+chart.Legend = new ChartLegend();
+
+var electronicSalesData = new ViewModel().ElectronicsSales;
+var furnitureSalesData = new ViewModel().FurnitureSales;
+
+var electronicSalesSeries = new ColumnSeries
+{
+    ItemsSource = electronicSalesData,
+    XBindingPath = "Month",
+    YBindingPath = "Sales",
+    EnableTooltip = true,
+    EnableAnimation = true,
+    Label = "Electronic Sales"
+};
+chart.Series.Add(electronicSalesSeries);
+
+var furnitureSalesSeries = new ColumnSeries
+{
+    ItemsSource = furnitureSalesData,
+    XBindingPath = "Month",
+    YBindingPath = "Sales",
+    EnableTooltip = true,
+    EnableAnimation = true,
+    Label = "Furniture Sales"
+};
+chart.Series.Add(furnitureSalesSeries); 
+ ```
  
 **Step 2:** Initialize the LineAnnotation within the Annotations collection of the SfCartesianChart, configure it to align with the desired axis, and use the LineCap property to add arrows to the line annotation.
 
 **XAML** 
 
- 
  ```xml
 <chart:SfCartesianChart>
 
@@ -68,6 +101,50 @@ Learn step-by-step instructions and gain insights to add arrows to the axis usin
     </chart:SfCartesianChart.Annotations>
 
 </chart:SfCartesianChart> 
+ ```
+
+**C#:** 
+ 
+ ```csharp
+var chart = new SfCartesianChart();
+
+var categoryAxis = new CategoryAxis
+{
+    .....
+};
+chart.XAxes.Add(categoryAxis);
+
+var numericalAxis = new NumericalAxis
+{
+    .....
+};
+chart.YAxes.Add(numericalAxis);
+
+chart.Annotations.Add(new LineAnnotation
+{
+    CoordinateUnit = ChartCoordinateUnit.Axis,
+    X1 = -0.5,
+    X2 = 5.6,
+    Y1 = 0,
+    Y2 = 0,
+    Stroke = Brush.Black,
+    LineCap = ChartLineCap.Arrow,
+    StrokeWidth = 2
+});
+
+chart.Annotations.Add(new LineAnnotation
+{
+    CoordinateUnit = ChartCoordinateUnit.Axis,
+    X1 = -0.5,
+    X2 = -0.5,
+    Y1 = 0,
+    Y2 = 30000,
+    Stroke = Brush.Black,
+    LineCap = ChartLineCap.Arrow,
+    StrokeWidth = 2
+});
+
+Content = chart; 
  ```
  
 **Output:**
